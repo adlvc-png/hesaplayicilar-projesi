@@ -49,12 +49,11 @@ function getSelectValue(id, defaultValue = '') {
  */
 function calculateMaterialStatus(available, required) {
     const difference = available - required;
-    
     return {
         difference: difference,
         isEnough: difference >= 0,
         formatted: formatNumber(Math.abs(difference)),
-        formattedWithSign: difference > 0 ? `+${formatNumber(difference)}` : 
+        formattedWithSign: difference > 0 ? `+${formatNumber(difference)}` :
                           difference < 0 ? `-${formatNumber(Math.abs(difference))}` : '0',
         class: difference >= 0 ? 'excess' : 'missing'
     };
@@ -65,11 +64,9 @@ function calculateMaterialStatus(available, required) {
  */
 function generateLevelOptions(min, max, prefix = 'Seviye', includeEmpty = true) {
     let options = includeEmpty ? '<option value="">-- Seçiniz --</option>' : '';
-    
     for (let level = min; level <= max; level++) {
         options += `<option value="${level}">${prefix} ${level}</option>`;
     }
-    
     return options;
 }
 
@@ -79,12 +76,8 @@ function generateLevelOptions(min, max, prefix = 'Seviye', includeEmpty = true) 
 function fillSelect(selectId, options, selectedValue = '') {
     const select = document.getElementById(selectId);
     if (!select) return;
-    
     select.innerHTML = options;
-    
-    if (selectedValue) {
-        select.value = selectedValue;
-    }
+    if (selectedValue) select.value = selectedValue;
 }
 
 /**
@@ -92,8 +85,7 @@ function fillSelect(selectId, options, selectedValue = '') {
  */
 function fillAllSelects(selectIds, options, selectedValues = {}) {
     selectIds.forEach(id => {
-        const selectedValue = selectedValues[id] || '';
-        fillSelect(id, options, selectedValue);
+        fillSelect(id, options, selectedValues[id] || '');
     });
 }
 
@@ -112,9 +104,7 @@ function resetAllInputs(inputIds) {
  */
 function toggleResults(show = true, resultsId = 'resultsSection') {
     const resultsSection = document.getElementById(resultsId);
-    if (resultsSection) {
-        resultsSection.style.display = show ? 'block' : 'none';
-    }
+    if (resultsSection) resultsSection.style.display = show ? 'block' : 'none';
 }
 
 /**
@@ -123,7 +113,6 @@ function toggleResults(show = true, resultsId = 'resultsSection') {
 function createTableRow(data, rowClass = '') {
     const row = document.createElement('tr');
     if (rowClass) row.className = rowClass;
-    
     data.forEach(cellData => {
         const cell = document.createElement('td');
         if (typeof cellData === 'object' && cellData.content) {
@@ -134,7 +123,6 @@ function createTableRow(data, rowClass = '') {
         }
         row.appendChild(cell);
     });
-    
     return row;
 }
 
@@ -143,13 +131,11 @@ function createTableRow(data, rowClass = '') {
  */
 function createTableHeader(headers) {
     const headerRow = document.createElement('tr');
-    
     headers.forEach(headerText => {
         const th = document.createElement('th');
         th.textContent = headerText;
         headerRow.appendChild(th);
     });
-    
     return headerRow;
 }
 
@@ -157,14 +143,9 @@ function createTableHeader(headers) {
  * Hata mesajı göster
  */
 function showError(message, duration = 3000) {
-    // Basit hata mesajı gösterimi
     const errorDiv = document.createElement('div');
     errorDiv.className = 'error-message';
-    errorDiv.innerHTML = `
-        <span>❌ ${message}</span>
-        <button onclick="this.parentElement.remove()">×</button>
-    `;
-    
+    errorDiv.innerHTML = `<span>❌ ${message}</span><button onclick="this.parentElement.remove()">×</button>`;
     errorDiv.style.cssText = `
         position: fixed;
         top: 20px;
@@ -182,15 +163,8 @@ function showError(message, duration = 3000) {
         max-width: 500px;
         animation: slideIn 0.3s ease;
     `;
-    
     document.body.appendChild(errorDiv);
-    
-    // Otomatik kaldırma
-    setTimeout(() => {
-        if (errorDiv.parentElement) {
-            errorDiv.remove();
-        }
-    }, duration);
+    setTimeout(() => errorDiv.remove(), duration);
 }
 
 /**
@@ -199,11 +173,7 @@ function showError(message, duration = 3000) {
 function showSuccess(message, duration = 3000) {
     const successDiv = document.createElement('div');
     successDiv.className = 'success-message';
-    successDiv.innerHTML = `
-        <span>✅ ${message}</span>
-        <button onclick="this.parentElement.remove()">×</button>
-    `;
-    
+    successDiv.innerHTML = `<span>✅ ${message}</span><button onclick="this.parentElement.remove()">×</button>`;
     successDiv.style.cssText = `
         position: fixed;
         top: 20px;
@@ -221,14 +191,8 @@ function showSuccess(message, duration = 3000) {
         max-width: 500px;
         animation: slideIn 0.3s ease;
     `;
-    
     document.body.appendChild(successDiv);
-    
-    setTimeout(() => {
-        if (successDiv.parentElement) {
-            successDiv.remove();
-        }
-    }, duration);
+    setTimeout(() => successDiv.remove(), duration);
 }
 
 /**
@@ -239,54 +203,26 @@ function addAnimationStyles() {
         const style = document.createElement('style');
         style.id = 'utils-animations';
         style.textContent = `
-            @keyframes slideIn {
-                from {
-                    transform: translateX(100%);
-                    opacity: 0;
-                }
-                to {
-                    transform: translateX(0);
-                    opacity: 1;
-                }
-            }
-            
-            @keyframes fadeIn {
-                from { opacity: 0; }
-                to { opacity: 1; }
-            }
-            
-            .error-message button,
-            .success-message button {
-                background: none;
-                border: none;
-                color: white;
-                font-size: 1.5rem;
-                cursor: pointer;
-                margin-left: 15px;
-                padding: 0 5px;
-            }
-            
-            .error-message button:hover,
-            .success-message button:hover {
-                opacity: 0.8;
-            }
+            @keyframes slideIn { from { transform: translateX(100%); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
+            @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+            .error-message button, .success-message button { background: none; border: none; color: white; font-size: 1.5rem; cursor: pointer; margin-left: 15px; padding: 0 5px; }
+            .error-message button:hover, .success-message button:hover { opacity: 0.8; }
         `;
         document.head.appendChild(style);
     }
 }
 
 /**
- * Sayfa yüklendiğinde yardımcıları başlat
+ * Yardımcı fonksiyonları başlat
  */
 function initUtils() {
     addAnimationStyles();
     console.log('🛠️ Yardımcı fonksiyonlar yüklendi');
 }
 
-// Sayfa yüklendiğinde başlat
 document.addEventListener('DOMContentLoaded', initUtils);
 
-// Global erişim için export (tarayıcıda window objesine ekle)
+// Global erişim için
 if (typeof window !== 'undefined') {
     window.Utils = {
         formatNumber,
