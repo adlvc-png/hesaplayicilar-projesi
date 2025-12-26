@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hesaplayıcılar - Ana Sayfa</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/menu.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Overlay -->
+        <div class="overlay" id="overlay"></div>
+
+        <!-- Menü Butonu -->
+        <button class="menu-toggle" id="menuToggle">☰</button>
+
+        <!-- Geri Butonu - Üst -->
+        <button class="back-button-top" id="backButtonTop">← Geri Dön</button>
+
+        <!-- Sol Menü -->
+        <div class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <div class="sidebar-title">🏹 Hesaplayıcılar</div>
+            </div>
+            
+            <div class="nav-categories">
+                <!-- Şef Ekipmanı -->
+                <div class="nav-category" data-category="chief">
+                    <div class="nav-category-text">🛡️ Şef Ekipmanı</div>
+                </div>
+                <div class="nav-subcategories" id="chiefSub">
+                    <a href="pages/chief-equipment.html" class="nav-subcategory" target="calculatorFrame">Şef Donanımı Hesaplayıcı</a>
+                    <a href="pages/chief-talisman.html" class="nav-subcategory" target="calculatorFrame">Şef Tılsımı Hesaplayıcı</a>
+                </div>
+
+                <!-- Kahraman Donanımı -->
+                <div class="nav-category" data-category="hero">
+                    <div class="nav-category-text">⚔️ Kahraman Donanımı</div>
+                </div>
+                <div class="nav-subcategories" id="heroSub">
+                    <a href="pages/hero-equipment.html" class="nav-subcategory" target="calculatorFrame">Mitik ve Efsanevi Donanım Hesaplayıcı</a>
+                </div>
+
+                <!-- Birlik Formasyonu -->
+                <div class="nav-category" data-category="formation">
+                    <div class="nav-category-text">🎯 Birlik Formasyonu</div>
+                </div>
+                <div class="nav-subcategories" id="formationSub">
+                    <a href="pages/formation.html" class="nav-subcategory" target="calculatorFrame">Formasyon Hesaplayıcı</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Ana İçerik -->
+        <div class="main-content" id="mainContent">
+            <!-- Ana Sayfa -->
+            <div class="content-section active" id="mainPage">
+                <div class="header">
+                    <h1>Hesaplayıcılar</h1>
+                    <p>İhtiyacınız olan hesaplayıcıyı seçin</p>
+                </div>
+
+                <!-- Ana Kartlar -->
+                <div class="main-cards">
+                    <a href="pages/chief-equipment.html" class="main-card" target="calculatorFrame">
+                        <div class="main-card-icon">🛡️</div>
+                        <div class="main-card-title">Şef Ekipmanı</div>
+                        <div class="main-card-desc">Şef donanımı ve tılsım hesaplamaları için araçlar</div>
+                    </a>
+
+                    <a href="pages/hero-equipment.html" class="main-card" target="calculatorFrame">
+                        <div class="main-card-icon">⚔️</div>
+                        <div class="main-card-title">Kahraman Donanımı</div>
+                        <div class="main-card-desc">Mitik ve efsanevi kahraman donanım hesaplamaları</div>
+                    </a>
+
+                    <a href="pages/formation.html" class="main-card" target="calculatorFrame">
+                        <div class="main-card-icon">🎯</div>
+                        <div class="main-card-title">Birlik Formasyonu</div>
+                        <div class="main-card-desc">Askeri birlik formasyonu ve dağılım hesaplamaları</div>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Hesaplayıcı İçeriği -->
+            <div class="content-section" id="calculatorPage">
+                <div class="header">
+                    <h1 id="calculatorTitle">Hesaplayıcı</h1>
+                    <p id="calculatorDesc">Hesaplamalarınızı yapın</p>
+                </div>
+
+                <!-- Hesaplayıcı IFrame -->
+                <div class="calculator-frame-container">
+                    <iframe 
+                        src="pages/chief-equipment.html" 
+                        name="calculatorFrame" 
+                        id="calculatorFrame"
+                        class="calculator-frame"
+                        title="Hesaplayıcı">
+                    </iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/app.js"></script>
+    <script src="js/menu.js"></script>
+</body>
+</html>
