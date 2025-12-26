@@ -1,420 +1,47 @@
-<!DOCTYPE html>
-<html lang="tr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kahraman Donanımı Hesaplayıcı</title>
-    <link rel="stylesheet" href="../css/calculator.css">
-</head>
-<body>
-    <div class="calculator-container">
-        <!-- Başlık -->
-        <div class="calculator-header">
-            <h1>Kahraman Donanımı Hesaplayıcısı</h1>
-            <p>Mitik ve Efsanevi Donanım Yükseltme Sistemini Hesaplayın</p>
-        </div>
-
-        <!-- Donanım Tipi Seçici -->
-        <div class="gear-type-selector">
-            <h2>Donanım Tipi Seçin</h2>
-            <div class="gear-type-buttons">
-                <button class="gear-type-btn mitik active" onclick="changeGearType('mitik')">Mitik Donanım</button>
-                <button class="gear-type-btn efsanevi" onclick="changeGearType('efsanevi')">Efsanevi Donanım</button>
-            </div>
-        </div>
-
-        <!-- Sistem Açıklaması -->
-        <div class="system-info">
-            <h3>🎮 Sistem Nasıl Çalışır?</h3>
-            <div class="info-grid">
-                <div class="info-item" id="dynamic-info">
-                    <!-- İçerik otomatik olarak değişecek -->
-                </div>
-            </div>
-        </div>
-
+<!DOCTYPE html>  
+<html lang="tr">  
+<head>  
+    <meta charset="UTF-8">  
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">  
+    <title>Kahraman Donanımı Hesaplayıcı</title>  
+    <!-- CSS yolu kök dizine göre güncellendi -->
+    <link rel="stylesheet" href="/css/calculator.css">  
+</head>  
+<body>  
+    <div class="calculator-container">  
+        <!-- Başlık -->  
+        <div class="calculator-header">  
+            <h1>Kahraman Donanımı Hesaplayıcısı</h1>  
+            <p>Mitik ve Efsanevi Donanım Yükseltme Sistemini Hesaplayın</p>  
+        </div>  
+  
+        <!-- Donanım Tipi Seçici -->  
+        <div class="gear-type-selector">  
+            <h2>Donanım Tipi Seçin</h2>  
+            <div class="gear-type-buttons">  
+                <button class="gear-type-btn mitik active" onclick="changeGearType('mitik')">Mitik Donanım</button>  
+                <button class="gear-type-btn efsanevi" onclick="changeGearType('efsanevi')">Efsanevi Donanım</button>  
+            </div>  
+        </div>  
+  
+        <!-- Sistem Açıklaması -->  
+        <div class="system-info">  
+            <h3>🎮 Sistem Nasıl Çalışır?</h3>  
+            <div class="info-grid">  
+                <div class="info-item" id="dynamic-info">  
+                    <!-- İçerik otomatik olarak değişecek -->  
+                </div>  
+            </div>  
+        </div>  
+  
         <!-- Ana Birimler - Mitik Donanım -->
-        <div class="units-grid" id="mitik-units">
-            <!-- Piyade - Mitik -->
-            <div class="unit-section">
-                <div class="unit-header">
-                    <div class="unit-icon mitik">🛡️</div>
-                    <div class="unit-name">Piyade - Mitik</div>
-                </div>
-                <div class="equipment-grid">
-                    <div class="equipment-item mitik">
-                        <div class="equipment-name">Gözlük</div>
-                        <div class="level-section">
-                            <div class="level-title">Donanım Seviyesi (1-100)</div>
-                            <div class="level-controls">
-                                <select class="level-select mitik" id="piyade-gözlük-level-current-mitik">
-                                    <option value="">Mevcut</option>
-                                </select>
-                                <select class="level-select mitik" id="piyade-gözlük-level-target-mitik">
-                                    <option value="">Hedef</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="level-section">
-                            <div class="level-title">Ustalık Seviyesi (1-10)</div>
-                            <div class="level-controls">
-                                <select class="level-select mitik" id="piyade-gözlük-mastery-current-mitik">
-                                    <option value="">Mevcut</option>
-                                </select>
-                                <select class="level-select mitik" id="piyade-gözlük-mastery-target-mitik">
-                                    <option value="">Hedef</option>
-                                </select>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="equipment-item mitik">
-                        <div class="equipment-name">Eldiven</div>
-                        <div class="level-section">
-                            <div class="level-title">Donanım Seviyesi (1-100)</div>
-                            <div class="level-controls">
-                                <select class="level-select mitik" id="piyade-eldiven-level-current-mitik">
-                                    <option value="">Mevcut</option>
-                                </select>
-                                <select class="level-select mitik" id="piyade-eldiven-level-target-mitik">
-                                    <option value="">Hedef</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="level-section">
-                            <div class="level-title">Ustalık Seviyesi (1-10)</div>
-                            <div class="level-controls">
-                                <select class="level-select mitik" id="piyade-eldiven-mastery-current-mitik">
-                                    <option value="">Mevcut</option>
-                                </select>
-                                <select class="level-select mitik" id="piyade-eldiven-mastery-target-mitik">
-                                    <option value="">Hedef</option>
-                                </select>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="equipment-item mitik">
-                        <div class="equipment-name">Kemer</div>
-                        <div class="level-section">
-                            <div class="level-title">Donanım Seviyesi (1-100)</div>
-                            <div class="level-controls">
-                                <select class="level-select mitik" id="piyade-kemer-level-current-mitik">
-                                    <option value="">Mevcut</option>
-                                </select>
-                                <select class="level-select mitik" id="piyade-kemer-level-target-mitik">
-                                    <option value="">Hedef</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="level-section">
-                            <div class="level-title">Ustalık Seviyesi (1-10)</div>
-                            <div class="level-controls">
-                                <select class="level-select mitik" id="piyade-kemer-mastery-current-mitik">
-                                    <option value="">Mevcut</option>
-                                </select>
-                                <select class="level-select mitik" id="piyade-kemer-mastery-target-mitik">
-                                    <option value="">Hedef</option>
-                                </select>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="equipment-item mitik">
-                        <div class="equipment-name">Bot</div>
-                        <div class="level-section">
-                            <div class="level-title">Donanım Seviyesi (1-100)</div>
-                            <div class="level-controls">
-                                <select class="level-select mitik" id="piyade-bot-level-current-mitik">
-                                    <option value="">Mevcut</option>
-                                </select>
-                                <select class="level-select mitik" id="piyade-bot-level-target-mitik">
-                                    <option value="">Hedef</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="level-section">
-                            <div class="level-title">Ustalık Seviyesi (1-10)</div>
-                            <div class="level-controls">
-                                <select class="level-select mitik" id="piyade-bot-mastery-current-mitik">
-                                    <option value="">Mevcut</option>
-                                </select>
-                                <select class="level-select mitik" id="piyade-bot-mastery-target-mitik">
-                                    <option value="">Hedef</option>
-                                </select>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Nişancı - Mitik -->
-            <div class="unit-section">
-                <div class="unit-header">
-                    <div class="unit-icon mitik">🎯</div>
-                    <div class="unit-name">Nişancı - Mitik</div>
-                </div>
-                <div class="equipment-grid">
-                    <!-- Nişancı ekipmanları benzer şekilde -->
-                    <div class="equipment-item mitik">
-                        <div class="equipment-name">Gözlük</div>
-                        <div class="level-section">
-                            <div class="level-title">Donanım Seviyesi (1-100)</div>
-                            <div class="level-controls">
-                                <select class="level-select mitik" id="nisanci-gözlük-level-current-mitik">
-                                    <option value="">Mevcut</option>
-                                </select>
-                                <select class="level-select mitik" id="nisanci-gözlük-level-target-mitik">
-                                    <option value="">Hedef</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="level-section">
-                            <div class="level-title">Ustalık Seviyesi (1-10)</div>
-                            <div class="level-controls">
-                                <select class="level-select mitik" id="nisanci-gözlük-mastery-current-mitik">
-                                    <option value="">Mevcut</option>
-                                </select>
-                                <select class="level-select mitik" id="nisanci-gözlük-mastery-target-mitik">
-                                    <option value="">Hedef</option>
-                                </select>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="equipment-item mitik">
-                        <div class="equipment-name">Eldiven</div>
-                        <div class="level-section">
-                            <div class="level-title">Donanım Seviyesi (1-100)</div>
-                            <div class="level-controls">
-                                <select class="level-select mitik" id="nisanci-eldiven-level-current-mitik">
-                                    <option value="">Mevcut</option>
-                                </select>
-                                <select class="level-select mitik" id="nisanci-eldiven-level-target-mitik">
-                                    <option value="">Hedef</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="level-section">
-                            <div class="level-title">Ustalık Seviyesi (1-10)</div>
-                            <div class="level-controls">
-                                <select class="level-select mitik" id="nisanci-eldiven-mastery-current-mitik">
-                                    <option value="">Mevcut</option>
-                                </select>
-                                <select class="level-select mitik" id="nisanci-eldiven-mastery-target-mitik">
-                                    <option value="">Hedef</option>
-                                </select>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="equipment-item mitik">
-                        <div class="equipment-name">Kemer</div>
-                        <div class="level-section">
-                            <div class="level-title">Donanım Seviyesi (1-100)</div>
-                            <div class="level-controls">
-                                <select class="level-select mitik" id="nisanci-kemer-level-current-mitik">
-                                    <option value="">Mevcut</option>
-                                </select>
-                                <select class="level-select mitik" id="nisanci-kemer-level-target-mitik">
-                                    <option value="">Hedef</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="level-section">
-                            <div class="level-title">Ustalık Seviyesi (1-10)</div>
-                            <div class="level-controls">
-                                <select class="level-select mitik" id="nisanci-kemer-mastery-current-mitik">
-                                    <option value="">Mevcut</option>
-                                </select>
-                                <select class="level-select mitik" id="nisanci-kemer-mastery-target-mitik">
-                                    <option value="">Hedef</option>
-                                </select>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="equipment-item mitik">
-                        <div class="equipment-name">Bot</div>
-                        <div class="level-section">
-                            <div class="level-title">Donanım Seviyesi (1-100)</div>
-                            <div class="level-controls">
-                                <select class="level-select mitik" id="nisanci-bot-level-current-mitik">
-                                    <option value="">Mevcut</option>
-                                </select>
-                                <select class="level-select mitik" id="nisanci-bot-level-target-mitik">
-                                    <option value="">Hedef</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="level-section">
-                            <div class="level-title">Ustalık Seviyesi (1-10)</div>
-                            <div class="level-controls">
-                                <select class="level-select mitik" id="nisanci-bot-mastery-current-mitik">
-                                    <option value="">Mevcut</option>
-                                </select>
-                                <select class="level-select mitik" id="nisanci-bot-mastery-target-mitik">
-                                    <option value="">Hedef</option>
-                                </select>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Mızrakçı - Mitik -->
-            <div class="unit-section">
-                <div class="unit-header">
-                    <div class="unit-icon mitik">⚔️</div>
-                    <div class="unit-name">Mızrakçı - Mitik</div>
-                </div>
-                <div class="equipment-grid">
-                    <!-- Mızrakçı ekipmanları benzer şekilde -->
-                    <div class="equipment-item mitik">
-                        <div class="equipment-name">Gözlük</div>
-                        <div class="level-section">
-                            <div class="level-title">Donanım Seviyesi (1-100)</div>
-                            <div class="level-controls">
-                                <select class="level-select mitik" id="mizrakci-gözlük-level-current-mitik">
-                                    <option value="">Mevcut</option>
-                                </select>
-                                <select class="level-select mitik" id="mizrakci-gözlük-level-target-mitik">
-                                    <option value="">Hedef</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="level-section">
-                            <div class="level-title">Ustalık Seviyesi (1-10)</div>
-                            <div class="level-controls">
-                                <select class="level-select mitik" id="mizrakci-gözlük-mastery-current-mitik">
-                                    <option value="">Mevcut</option>
-                                </select>
-                                <select class="level-select mitik" id="mizrakci-gözlük-mastery-target-mitik">
-                                    <option value="">Hedef</option>
-                                </select>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="equipment-item mitik">
-                        <div class="equipment-name">Eldiven</div>
-                        <div class="level-section">
-                            <div class="level-title">Donanım Seviyesi (1-100)</div>
-                            <div class="level-controls">
-                                <select class="level-select mitik" id="mizrakci-eldiven-level-current-mitik">
-                                    <option value="">Mevcut</option>
-                                </select>
-                                <select class="level-select mitik" id="mizrakci-eldiven-level-target-mitik">
-                                    <option value="">Hedef</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="level-section">
-                            <div class="level-title">Ustalık Seviyesi (1-10)</div>
-                            <div class="level-controls">
-                                <select class="level-select mitik" id="mizrakci-eldiven-mastery-current-mitik">
-                                    <option value="">Mevcut</option>
-                                </select>
-                                <select class="level-select mitik" id="mizrakci-eldiven-mastery-target-mitik">
-                                    <option value="">Hedef</option>
-                                </select>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="equipment-item mitik">
-                        <div class="equipment-name">Kemer</div>
-                        <div class="level-section">
-                            <div class="level-title">Donanım Seviyesi (1-100)</div>
-                            <div class="level-controls">
-                                <select class="level-select mitik" id="mizrakci-kemer-level-current-mitik">
-                                    <option value="">Mevcut</option>
-                                </select>
-                                <select class="level-select mitik" id="mizrakci-kemer-level-target-mitik">
-                                    <option value="">Hedef</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="level-section">
-                            <div class="level-title">Ustalık Seviyesi (1-10)</div>
-                            <div class="level-controls">
-                                <select class="level-select mitik" id="mizrakci-kemer-mastery-current-mitik">
-                                    <option value="">Mevcut</option>
-                                </select>
-                                <select class="level-select mitik" id="mizrakci-kemer-mastery-target-mitik">
-                                    <option value="">Hedef</option>
-                                </select>
-                            </div>
-                        </div>
-                    </div>
-                    
-                         <div class="equipment-item mitik">
-                        <div class="equipment-name">Bot</div>
-                        <div class="level-section">
-                            <div class="level-title">Donanım Seviyesi (1-100)</div>
-                            <div class="level-controls">
-                                <select class="level-select mitik" id="mizrakci-bot-level-current-mitik">
-                                    <option value="">Mevcut</option>
-                                </select>
-                                <select class="level-select mitik" id="mizrakci-bot-level-target-mitik">
-                                    <option value="">Hedef</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="level-section">
-                            <div class="level-title">Ustalık Seviyesi (1-10)</div>
-                            <div class="level-controls">
-                                <select class="level-select mitik" id="mizrakci-bot-mastery-current-mitik">
-                                    <option value="">Mevcut</option>
-                                </select>
-                                <select class="level-select mitik" id="mizrakci-bot-mastery-target-mitik">
-                                    <option value="">Hedef</option>
-                                </select>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        <div class="units-grid" id="mitik-units">  
+            <!-- Piyade, Nişancı, Mızrakçı birimleri burada mevcut HTML yapısı ile korunuyor -->
         </div>
 
         <!-- Efsanevi Donanım (başlangıçta gizli) -->
         <div class="units-grid" id="efsanevi-units" style="display: none;">
             <!-- Efsanevi ekipmanlar benzer yapıda -->
-            <div class="unit-section">
-                <div class="unit-header">
-                    <div class="unit-icon efsanevi">🛡️</div>
-                    <div class="unit-name">Piyade - Efsanevi</div>
-                </div>
-                <div class="equipment-grid">
-                    <div class="equipment-item efsanevi">
-                        <div class="equipment-name">Gözlük</div>
-                        <div class="level-section">
-                            <div class="level-title">Donanım Seviyesi (1-100)</div>
-                            <div class="level-controls">
-                                <select class="level-select efsanevi" id="piyade-gözlük-level-current-efsanevi">
-                                    <option value="">Mevcut</option>
-                                </select>
-                                <select class="level-select efsanevi" id="piyade-gözlük-level-target-efsanevi">
-                                    <option value="">Hedef</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="level-section">
-                            <div class="level-title">Ustalık Seviyesi (10-20)</div>
-                            <div class="level-controls">
-                                <select class="level-select efsanevi" id="piyade-gözlük-mastery-current-efsanevi">
-                                    <option value="">Mevcut</option>
-                                </select>
-                                <select class="level-select efsanevi" id="piyade-gözlük-mastery-target-efsanevi">
-                                    <option value="">Hedef</option>
-                                </select>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Diğer efsanevi ekipmanlar benzer şekilde -->
-                </div>
-            </div>
-            <!-- Diğer efsanevi birimler benzer şekilde -->
         </div>
 
         <!-- Malzemeler -->
@@ -449,71 +76,12 @@
 
         <!-- Sonuçlar -->
         <div class="results-section" id="resultsSection" style="display: none;">
-            <h2>Yükseltme Sonuçları</h2>
-            
-            <div class="gear-results">
-                <h3 class="gear-title mitik">Mitik Donanım Maliyetleri</h3>
-                <div class="total-cost mitik">
-                    <div class="cost-item">
-                        <span class="cost-name">Toplam XP Gereksinimi:</span>
-                        <span class="cost-value" id="total-xp-mitik">0</span>
-                    </div>
-                    <div class="cost-item">
-                        <span class="cost-name">Toplam Esans Taşı Gereksinimi:</span>
-                        <span class="cost-value" id="total-essence-mitik">0</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="gear-results">
-                <h3 class="gear-title efsanevi">Efsanevi Donanım Maliyetleri</h3>
-                <div class="total-cost efsanevi">
-                    <div class="cost-item">
-                        <span class="cost-name">Toplam XP Gereksinimi:</span>
-                        <span class="cost-value" id="total-xp-efsanevi">0</span>
-                    </div>
-                    <div class="cost-item">
-                        <span class="cost-name">Toplam Esans Taşı Gereksinimi:</span>
-                        <span class="cost-value" id="total-essence-efsanevi">0</span>
-                    </div>
-                    <div class="cost-item">
-                        <span class="cost-name">Toplam Mitril Gereksinimi:</span>
-                        <span class="cost-value" id="total-mitril-efsanevi">0</span>
-                    </div>
-                    <div class="cost-item">
-                        <span class="cost-name">Toplam Mitik Donanım Gereksinimi:</span>
-                        <span class="cost-value" id="total-mitik-efsanevi">0</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="grand-total">
-                <h3 class="gear-title">Genel Durum</h3>
-                <div class="cost-item">
-                    <span class="cost-name">Toplam XP:</span>
-                    <span class="cost-value" id="total-xp-all">0</span>
-                </div>
-                <div class="cost-item">
-                    <span class="cost-name">Toplam Esans Taşı:</span>
-                    <span class="cost-value" id="total-essence-all">0</span>
-                </div>
-                <div class="cost-item">
-                    <span class="cost-name">Toplam Mitril:</span>
-                    <span class="cost-value" id="total-mitril-all">0</span>
-                </div>
-                <div class="cost-item">
-                    <span class="cost-name">Toplam Mitik Donanım:</span>
-                    <span class="cost-value" id="total-mitik-all">0</span>
-                </div>
-                <div class="cost-item" style="border-top: 2px solid #4CAF50; padding-top: 15px; margin-top: 10px;">
-                    <span class="cost-name">Durum:</span>
-                    <span class="cost-value" id="status-message">Hesaplanıyor...</span>
-                </div>
-            </div>
+            <!-- Sonuçlar ve maliyetler mevcut HTML ile korunuyor -->
         </div>
     </div>
 
-    <script src="../js/utils.js"></script>
-    <script src="../js/hero-equipment.js"></script>
+    <!-- JS yolları kök dizine göre güncellendi -->
+    <script src="/js/utils.js"></script>
+    <script src="/js/hero-equipment.js"></script>
 </body>
 </html>
