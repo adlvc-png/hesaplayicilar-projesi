@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Formasyon Hesaplayıcı</title>
-    <link rel="stylesheet" href="../css/calculator.css">
+    <!-- CSS yolu kök dizine göre güncellendi -->
+    <link rel="stylesheet" href="/css/calculator.css">
 </head>
 <body>
     <div class="calculator-container formation-container">
@@ -19,7 +20,6 @@
             <!-- Sol Taraf - Girişler -->
             <div class="formation-card">
                 <h2>📊 Giriş Bilgileri</h2>
-                
                 <div class="info-box">
                     <strong>ℹ️ Bilgi:</strong> Ekip sayısını seçin ve her ekip için kapasite girin. 
                     Yüzdeler her ekibe ayrı ayrı uygulanacaktır.
@@ -79,7 +79,6 @@
             <!-- Sağ Taraf - Sonuçlar -->
             <div class="formation-card">
                 <h2>📈 Hesaplama Sonuçları</h2>
-                
                 <div class="quick-settings">
                     <div class="quick-settings-title">⚡ Hızlı Ayarlar</div>
                     <div class="quick-settings-grid">
@@ -93,7 +92,7 @@
 
                 <h3>🔢 Ekip Kapasiteleri</h3>
                 <div class="squad-capacity-grid" id="squad-capacity-container">
-                    <!-- Ekip kapasiteleri JavaScript ile eklenecek -->
+                    <!-- Ekip kapasiteleri JS ile eklenecek -->
                 </div>
 
                 <div class="total-capacity-box">
@@ -103,7 +102,7 @@
 
                 <h3>🛡️ Ekip Dağılımı</h3>
                 <div class="squads-grid" id="squads-container">
-                    <!-- Ekip bilgileri JavaScript ile eklenecek -->
+                    <!-- Ekip bilgileri JS ile eklenecek -->
                 </div>
 
                 <h3>⚖️ Durum Analizi</h3>
@@ -125,7 +124,8 @@
         </div>
     </div>
 
-    <script src="../js/utils.js"></script>
-    <script src="../js/formation.js"></script>
+    <!-- JS yolları kök dizine göre güncellendi -->
+    <script src="/js/utils.js"></script>
+    <script src="/js/formation.js"></script>
 </body>
 </html>
